@@ -50,17 +50,7 @@ public class HelloProcedural {
 ```
 ### 2. OOP
 ```java
-class Produk {
-   String nama;
-   int harga;
-   Produk(String nama, int harga) {
-      this.nama = nama;
-      this.harga = harga;
-   }
-}
-```
-### 3. Functional
-```java
+
 public class HelloOOP {
    public static void main(String[] args) {
       String nim = "240202836";
@@ -71,7 +61,9 @@ public class HelloOOP {
       
    }
 }
-
+```
+### 3. Functional
+```java
 public class HelloFunctional {
    public static void main(String[] args) {
       String nim = "240202836";
