@@ -79,6 +79,7 @@ public class HelloFunctional {
    }
 }
 ---
+---
 
 ## Hasil Eksekusi
   
@@ -95,7 +96,6 @@ public class HelloFunctional {
 **HelloProcedural**
 
 ![Screenshot hasil](screenshots/Cuplikan layar 2025-10-06 114825.png)
----
 ---
 
 ## Analisis
