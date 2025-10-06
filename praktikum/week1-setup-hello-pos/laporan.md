@@ -74,9 +74,9 @@ public class HelloFunctional {
    
    }
 }
+```
 ---
 
----
 ## Hasil Eksekusi
   
 **HelloFunctional**  
