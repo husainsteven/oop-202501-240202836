@@ -141,7 +141,6 @@ Jawaban Quiz – Pertemuan 1: Pengenalan Paradigma Pemrograman
 5. Bagaimana paradigma fungsional dapat membantu mengurangi kode berulang (boilerplate code)?
    Jawaban:** Dengan menggunakan fungsi murni, ekspresi lambda, dan konsep *higher-order function*, paradigma fungsional memungkinkan kode lebih ringkas dan reusable sehingga mengurangi penulisan kode yang sama berulang kali.
 
----
 
 
 
