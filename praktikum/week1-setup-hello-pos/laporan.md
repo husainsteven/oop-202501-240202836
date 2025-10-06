@@ -89,12 +89,12 @@ public class HelloFunctional {
 
 **HelloOPP**  
 
-![Screenshot hasil](screenshot/Cuplikan layar 2025-10-06 114845.png)
+![Screenshot hasil](screenshots/Cuplikan layar 2025-10-06 114845.png)
 ---
 
 **HelloProcedural**
 
-![Screenshot hasil](screenshot/Cuplikan layar 2025-10-06 114825.png)
+![Screenshot hasil](screenshots/Cuplikan layar 2025-10-06 114825.png)
 ---
 ---
 
