@@ -81,7 +81,7 @@ public class HelloFunctional {
   
 **HelloFunctional**  
 
-![Screenshot hasil](screenshots/Cuplikan layar 2025-10-06 114900.png)
+![Screenshot hasil](week1-setup-hello-pos/screenshots/Cuplikan layar 2025-10-06 114900.png)
 ---
 
 **HelloOPP**  
