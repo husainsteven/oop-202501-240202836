@@ -78,7 +78,7 @@ public class HelloFunctional {
    
    }
 }
-
+---
 
 ## Hasil Eksekusi
   
