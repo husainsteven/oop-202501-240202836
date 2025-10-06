@@ -36,7 +36,7 @@ HelloFunctional.java (untuk paradigma fungsional)
 ---
 
 ## Kode Program
-
+### 1. Prosedural
 ```java
 public class HelloProcedural {
    public static void main(String[] args) {
@@ -47,7 +47,9 @@ public class HelloProcedural {
       System.out.println("Nama:: " + nama + ", NIM: " + nim);
    }
 }
-
+```
+### 2. OOP
+```java
 class Produk {
    String nama;
    int harga;
@@ -56,7 +58,9 @@ class Produk {
       this.harga = harga;
    }
 }
-
+```
+### 3. Functional
+```java
 public class HelloOOP {
    public static void main(String[] args) {
       String nim = "240202836";
@@ -79,8 +83,8 @@ public class HelloFunctional {
    }
 }
 ---
----
 
+---
 ## Hasil Eksekusi
   
 **HelloFunctional**  
