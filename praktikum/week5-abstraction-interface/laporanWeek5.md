@@ -71,9 +71,8 @@ System.out.println(p1.getNama());
 ---
 
 ## Hasil Eksekusi
-(Sertakan screenshot hasil eksekusi program.  
-![Screenshot hasil](screenshots/hasil.png)
-)
+<img width="1920" height="1200" alt="Cuplikan layar 2025-11-13 195752" src="https://github.com/user-attachments/assets/5710c441-77e6-4c16-9468-0d8c10c2ff32" />
+
 ---
 
 ## Analisis
