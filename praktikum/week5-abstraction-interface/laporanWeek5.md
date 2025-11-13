@@ -252,25 +252,22 @@ public class MainAbstraction {
 ---
 
 ## Analisis
-(
-- Jelaskan bagaimana kode berjalan.  
-- Apa perbedaan pendekatan minggu ini dibanding minggu sebelumnya.  
-- Kendala yang dihadapi dan cara mengatasinya.  
-)
+Program ini menggunakan abstraksi supaya tidak perlu menulis ulang detail cara kerja setiap jenis pembayaran. Semua jenis pembayaran (seperti Cash, EWallet, dan TransferBank) dibuat berdasarkan satu kerangka utama, yaitu class Pembayaran.
+Setiap kelas turunan punya aturan sendiri untuk menghitung biaya dan cara memproses pembayaran. Lalu, ada dua interface (Validatable dan Receiptable) yang digunakan agar kelas bisa punya beberapa kemampuan sekaligus
+Untuk kesulitannya, sempat bingung memastikan semua kelas turunan sudah melengkapi method dari class abstrak dan interface. Tapi bisa diatasi dengan fitur bantuan IDE (seperti auto generate method) supaya tidak ada yang ketinggalan.
 ---
 
 ## Kesimpulan
-(Tuliskan kesimpulan dari praktikum minggu ini.  
-Contoh: *Dengan menggunakan class dan object, program menjadi lebih terstruktur dan mudah dikembangkan.*)
+Dengan memakai abstract class dan interface, program jadi lebih mudah diatur dan dikembangkan. KKita bisa menambah jenis pembayaran baru tanpa harus mengubah bagian lain dari program. Selain itu, konsep multiple inheritance lewat interface membuat program lebih fleksibel dan tetap aman. Secara keseluruhan, penerapan abstraksi ini membuat kode lebih terstruktur dan efisien.
+
 
 ---
 
 ## Quiz
-(1. [Tuliskan kembali pertanyaan 1 dari panduan]  
-   **Jawaban:** …  
+1. Jelaskan perbedaan konsep dan penggunaan abstract class dan interface.  
+   Perbedaan antara abstract class dan interface terletak pada konsep serta cara penggunaannya dalam pemrograman Java. Abstract class digunakan sebagai kelas dasar yang dapat memiliki atribut, konstruktor, serta metode yang sudah diimplementasikan sebagian maupun yang bersifat abstrak (tanpa isi). Kelas ini cocok digunakan ketika beberapa kelas memiliki kesamaan perilaku dan struktur data yang dapat diwariskan. Sementara itu, interface berfungsi sebagai kumpulan kontrak perilaku yang harus diikuti oleh kelas lain. Interface hanya berisi deklarasi metode tanpa implementasi, dan seluruh variabelnya bersifat konstan (public static final). Dalam pewarisan, Java hanya mengizinkan satu abstract class untuk di-extend, tetapi memungkinkan satu kelas untuk implements banyak interface sekaligus, sehingga lebih fleksibel dalam mendefinisikan perilak
+2. Mengapa multiple inheritance lebih aman dilakukan dengan interface pada Java?  
+   Penggunaan interface dalam multiple inheritance dianggap lebih aman di Java karena tidak menimbulkan konflik pewarisan (diamond problem). Hal ini terjadi karena interface hanya mendefinisikan “apa” yang harus dilakukan tanpa menentukan “bagaimana” cara melakukannya. Dengan demikian, beberapa interface dapat digabungkan pada satu kelas tanpa menimbulkan bentrokan implementasi. Sebaliknya, jika Java mengizinkan pewarisan ganda antar kelas, kemungkinan besar akan terjadi konflik ketika dua kelas induk memiliki metode dengan nama dan perilaku yang sama.  
 
-2. [Tuliskan kembali pertanyaan 2 dari panduan]  
-   **Jawaban:** …  
-
-3. [Tuliskan kembali pertanyaan 3 dari panduan]  
-   **Jawaban:** …  )
+3. Pada contoh Agri-POS, bagian mana yang paling tepat menjadi abstract class dan mana yang menjadi interface? Jelaskan alasannya.  
+   Dalam konteks proyek Agri-POS (Agricultural Point of Sale System), bagian yang paling tepat dijadikan abstract class adalah kelas seperti Produk, Transaksi, atau Pengguna, karena ketiganya memiliki atribut dan perilaku dasar yang sama, seperti id, nama, harga, serta metode umum seperti tampilkanInfo() atau hitungTotal(). Sementara itu, bagian yang sebaiknya dijadikan interface adalah Pembayaran, CetakStruk, Diskonable, atau Stokable, karena perilaku tersebut bisa dimiliki oleh berbagai kelas berbeda tanpa perlu berbagi atribut. Misalnya, interface Pembayaran dapat diimplementasikan oleh TransaksiTunai dan TransaksiDigital, keduanya memiliki cara pembayaran berbeda tetapi harus memiliki metode prosesPembayaran(). Dengan pembagian seperti ini, struktur program menjadi lebih teratur, fleksibel, dan mudah dikembangkan.
