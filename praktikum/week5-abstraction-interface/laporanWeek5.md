@@ -92,6 +92,7 @@ Buat Pembayaran (abstract) dengan field invoiceNo, total dan method:
 ## Kode Program
 1. Cash.java
 
+```java
 package main.java.com.upb.agripos.Model.Pembayaran;
 
 import main.java.com.upb.agripos.Model.Kontrak.Receiptable;
@@ -120,6 +121,7 @@ public class Cash extends Pembayaran implements Receiptable {
                 invoiceNo, totalBayar(), tunai, Math.max(0, tunai - totalBayar()));
     }
 }
+```
 
 2. EWallet.java
 
