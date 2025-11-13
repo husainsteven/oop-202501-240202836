@@ -124,7 +124,8 @@ public class Cash extends Pembayaran implements Receiptable {
 ```
 
 2. EWallet.java
-
+   
+```java
 package main.java.com.upb.agripos.Model.Pembayaran;
 
 import main.java.com.upb.agripos.Model.Kontrak.Validatable;
@@ -161,9 +162,11 @@ public class EWallet extends Pembayaran implements Validatable, Receiptable {
                 invoiceNo, totalBayar(), akun, prosesPembayaran() ? "BERHASIL" : "GAGAL");
     }
 }
+```java
 
 3. Pembayaran.java
 
+```java
 package main.java.com.upb.agripos.Model.Pembayaran;
 
 public abstract class Pembayaran {
@@ -185,25 +188,31 @@ public abstract class Pembayaran {
     public String getInvoiceNo() { return invoiceNo; }
     public double getTotal() { return total; }
 }
+```java
 
 4. Receiptable.java
 
+```java
 package main.java.com.upb.agripos.Model.Kontrak;
 
 public interface Receiptable {
     String cetakStruk();
 }
+```java
 
 5. Validatable.java
 
+```java
 package main.java.com.upb.agripos.Model.Kontrak;
 
 public interface Validatable {
     boolean validasi(); // misal validasi OTP/ PIN
 }
+```java
 
 6. CreditBy.java
 
+```java
 package main.java.com.upb.agripos.util;
 
 public class CreditBy {
@@ -212,9 +221,11 @@ public class CreditBy {
         System.out.println("Credit by: " + nim + " - " + nama);
     }
 }
+```java
 
-7. MianAbstraction.java
+7. MainAbstraction.java
 
+```java
 package main.java.com.upb.agripos;
 
 import main.java.com.upb.agripos.Model.Pembayaran.*;
@@ -232,6 +243,7 @@ public class MainAbstraction {
     CreditBy.print("240202836", "Husain Stefano");
     }
 }
+```java
 ---
 
 ## Hasil Eksekusi
