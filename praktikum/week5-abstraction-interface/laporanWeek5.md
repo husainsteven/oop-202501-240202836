@@ -60,14 +60,176 @@ Buat Pembayaran (abstract) dengan field invoiceNo, total dan method:
 ---
 
 ## Kode Program
-(Tuliskan kode utama yang dibuat, contoh:  
+1.Abstract Class – Pembayaran
 
-```java
-// Contoh
-Produk p1 = new Produk("BNH-001", "Benih Padi", 25000, 100);
-System.out.println(p1.getNama());
-```
-)
+Buat Pembayaran (abstract) dengan field invoiceNo, total dan method:
+- double biaya() (abstrak) → biaya tambahan (fee).
+- boolean prosesPembayaran() (abstrak) → mengembalikan status berhasil/gagal.
+- double totalBayar() (konkrit) → return total + biaya();  
+2. Subclass Konkret
+
+- Cash → biaya = 0, proses = selalu berhasil jika tunai >= totalBayar().
+- EWallet → biaya = 1.5% dari total; proses = membutuhkan validasi.
+3. Interface
+
+- Validatable → boolean validasi(); (contoh: OTP).
+- Receiptable → String cetakStruk();
+4. Multiple Inheritance via Interface
+
+- EWallet mengimplementasikan dua interface: Validatable, Receiptable.
+- Cash setidaknya mengimplementasikan Receiptable.
+5. Main Class
+
+- Buat MainAbstraction.java untuk mendemonstrasikan pemakaian Pembayaran (polimorfik).
+- Tampilkan hasil proses dan struk. Di akhir, panggil CreditBy.print("[NIM]", "[Nama]").
+6. Commit dan Push
+
+- Commit dengan pesan: week5-abstraction-interface.
+
+
+---
+
+## Kode Program
+1. Cash.java
+
+package main.java.com.upb.agripos.Model.Pembayaran;
+
+import main.java.com.upb.agripos.Model.Kontrak.Receiptable;
+
+public class Cash extends Pembayaran implements Receiptable {
+    private double tunai;
+
+    public Cash(String invoiceNo, double total, double tunai) {
+        super(invoiceNo, total);
+        this.tunai = tunai;
+    }
+
+    @Override
+    public double biaya() {
+        return 0.0;
+    }
+
+    @Override
+    public boolean prosesPembayaran() {
+        return tunai >= totalBayar(); // sederhana: cukup uang tunai
+    }
+
+    @Override
+    public String cetakStruk() {
+        return String.format("INVOICE %s | TOTAL: %.2f | BAYAR CASH: %.2f | KEMBALI: %.2f",
+                invoiceNo, totalBayar(), tunai, Math.max(0, tunai - totalBayar()));
+    }
+}
+
+2. EWallet.java
+
+package main.java.com.upb.agripos.Model.Pembayaran;
+
+import main.java.com.upb.agripos.Model.Kontrak.Validatable;
+import main.java.com.upb.agripos.Model.Kontrak.Receiptable;
+
+public class EWallet extends Pembayaran implements Validatable, Receiptable {
+    private String akun;
+    private String otp; // sederhana untuk simulasi
+
+    public EWallet(String invoiceNo, double total, String akun, String otp) {
+        super(invoiceNo, total);
+        this.akun = akun;
+        this.otp = otp;
+    }
+
+    @Override
+    public double biaya() {
+        return total * 0.015; // 1.5% fee
+    }
+
+    @Override
+    public boolean validasi() {
+        return otp != null && otp.length() == 6; // contoh validasi sederhana
+    }
+
+    @Override
+    public boolean prosesPembayaran() {
+        return validasi(); // jika validasi lolos, anggap berhasil
+    }
+
+    @Override
+    public String cetakStruk() {
+        return String.format("INVOICE %s | TOTAL+FEE: %.2f | E-WALLET: %s | STATUS: %s",
+                invoiceNo, totalBayar(), akun, prosesPembayaran() ? "BERHASIL" : "GAGAL");
+    }
+}
+
+3. Pembayaran.java
+
+package main.java.com.upb.agripos.Model.Pembayaran;
+
+public abstract class Pembayaran {
+    protected String invoiceNo;
+    protected double total;
+
+    public Pembayaran(String invoiceNo, double total) {
+        this.invoiceNo = invoiceNo;
+        this.total = total;
+    }
+
+    public abstract double biaya();               // fee/biaya tambahan
+    public abstract boolean prosesPembayaran();   // proses spesifik tiap metode
+
+    public double totalBayar() {
+        return total + biaya();
+    }
+
+    public String getInvoiceNo() { return invoiceNo; }
+    public double getTotal() { return total; }
+}
+
+4. Receiptable.java
+
+package main.java.com.upb.agripos.Model.Kontrak;
+
+public interface Receiptable {
+    String cetakStruk();
+}
+
+5. Validatable.java
+
+package main.java.com.upb.agripos.Model.Kontrak;
+
+public interface Validatable {
+    boolean validasi(); // misal validasi OTP/ PIN
+}
+
+6. CreditBy.java
+
+package main.java.com.upb.agripos.util;
+
+public class CreditBy {
+    public static void print(String nim, String nama) {
+        System.out.println("\n---");
+        System.out.println("Credit by: " + nim + " - " + nama);
+    }
+}
+
+7. MianAbstraction.java
+
+package main.java.com.upb.agripos;
+
+import main.java.com.upb.agripos.Model.Pembayaran.*;
+import main.java.com.upb.agripos.Model.Kontrak.*;
+import main.java.com.upb.agripos.util.CreditBy;
+
+public class MainAbstraction {
+    public static void main(String[] args) {
+        Pembayaran cash = new Cash("MDL-076", 150000, 170000);
+        Pembayaran ew = new EWallet("SMS-098", 250000, "Steve@ewallet", "123456");
+
+        System.out.println(((Receiptable) cash).cetakStruk());
+        System.out.println(((Receiptable) ew).cetakStruk());
+
+    CreditBy.print("240202836", "Husain Stefano");
+    }
+}
 ---
 
 ## Hasil Eksekusi
