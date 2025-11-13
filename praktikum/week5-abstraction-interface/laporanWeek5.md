@@ -56,37 +56,6 @@ Buat Pembayaran (abstract) dengan field invoiceNo, total dan method:
 
 - Commit dengan pesan: week5-abstraction-interface.
 
-
----
-
-## Kode Program
-1.Abstract Class – Pembayaran
-
-Buat Pembayaran (abstract) dengan field invoiceNo, total dan method:
-- double biaya() (abstrak) → biaya tambahan (fee).
-- boolean prosesPembayaran() (abstrak) → mengembalikan status berhasil/gagal.
-- double totalBayar() (konkrit) → return total + biaya();  
-2. Subclass Konkret
-
-- Cash → biaya = 0, proses = selalu berhasil jika tunai >= totalBayar().
-- EWallet → biaya = 1.5% dari total; proses = membutuhkan validasi.
-3. Interface
-
-- Validatable → boolean validasi(); (contoh: OTP).
-- Receiptable → String cetakStruk();
-4. Multiple Inheritance via Interface
-
-- EWallet mengimplementasikan dua interface: Validatable, Receiptable.
-- Cash setidaknya mengimplementasikan Receiptable.
-5. Main Class
-
-- Buat MainAbstraction.java untuk mendemonstrasikan pemakaian Pembayaran (polimorfik).
-- Tampilkan hasil proses dan struk. Di akhir, panggil CreditBy.print("[NIM]", "[Nama]").
-6. Commit dan Push
-
-- Commit dengan pesan: week5-abstraction-interface.
-
-
 ---
 
 ## Kode Program
