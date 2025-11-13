@@ -76,20 +76,80 @@ Add practical reports and example files for weeks 1 to 16
 ---
 
 ## Kode Program
-(Tuliskan kode utama yang dibuat, contoh:  
+(
+  1. Produk.java
+package main.java.com.upb.agripos;
 
-```java
-// Contoh
-Produk p1 = new Produk("BNH-001", "Benih Padi", 25000, 100);
-System.out.println(p1.getNama());
-```
-)
----
+public class Produk {
+    private String kode;
+    private String nama;
+    private double harga;
+    private int stok;
+
+    public Produk(String kode, String nama, double harga, int stok) {
+        this.kode = kode;
+        this.nama = nama;
+        this.harga = harga;
+        this.stok = stok;
+    }
+
+    public String getKode() { return kode; }
+    public void setKode(String kode) { this.kode = kode; }
+
+    public String getNama() { return nama; }
+    public void setNama(String nama) { this.nama = nama; }
+
+    public double getHarga() { return harga; }
+    public void setHarga(double harga) { this.harga = harga; }
+
+    public int getStok() { return stok; }
+    public void setStok(int stok) { this.stok = stok; }
+
+    public void tambahStok(int jumlah) {
+        this.stok += jumlah;
+    }
+
+    public void kurangiStok(int jumlah) {
+        if (this.stok >= jumlah) {
+            this.stok -= jumlah;
+        } else {
+            System.out.println("Stok tidak mencukupi!");
+        }
+    }
+}
+2. CreditBy.java
+package main.java.com.upb.agripos;
+
+public class CreditBy {
+    public static void print(String nim, String nama) {
+        System.out.println("\ncredit by: " + nim + " - " + nama);
+    }
+}
+
+3. MainProduk.java
+package main.java.com.upb.agripos;
+
+public class MainProduk {
+    public static void main(String[] args) {
+        Produk p1 = new Produk("BHN-123", "Beras Pandan Wangi 5kg", 75000, 50);
+        Produk p2 = new Produk("BMB-456", "Minyak Goreng 2L", 32000, 100);
+        Produk p3 = new Produk("ALT-789", "Kompor Gas 2 Tungku", 275000, 20);
+
+        System.out.println("Kode: " + p1.getKode() + ", Nama: " + p1.getNama() + ", Harga: " + p1.getHarga() + ", Stok: " + p1.getStok());
+        System.out.println("Kode: " + p2.getKode() + ", Nama: " + p2.getNama() + ", Harga: " + p2.getHarga() + ", Stok: " + p2.getStok());
+        System.out.println("Kode: " + p3.getKode() + ", Nama: " + p3.getNama() + ", Harga: " + p3.getHarga() + ", Stok: " + p3.getStok());
+
+        p1.kurangiStok(10);
+        p1.tambahStok(8);
+
+        CreditBy.print("240202836", "Husain Stefano");
+    }
+}
+
 
 ## Hasil Eksekusi
-(Sertakan screenshot hasil eksekusi program.  
-![Screenshot hasil](screenshots/hasil.png)
-)
+[alt text](<Screenshot 2025-10-16 231934.png>)
+[alt text](<Screenshot 2025-10-16 232029.png>)
 ---
 
 ## Analisis
