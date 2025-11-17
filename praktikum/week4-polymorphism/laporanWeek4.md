@@ -65,31 +65,34 @@ System.out.println(p1.getNama());
 ---
 
 ## Hasil Eksekusi
-(Sertakan screenshot hasil eksekusi program.  
-![Screenshot hasil](screenshots/hasil.png)
-)
+  
+![Screenshot hasil](screenshots/week4.png)
+
 ---
 
 ## Analisis
-(
-- Jelaskan bagaimana kode berjalan.  
-- Apa perbedaan pendekatan minggu ini dibanding minggu sebelumnya.  
-- Kendala yang dihadapi dan cara mengatasinya.  
-)
+- Cara Kerja Kode: Program utama (MainPolymorphism) menginisialisasi sebuah array Produk[] yang berisi empat objek subclass (Benih, Pupuk, AlatPertanian, ObatHama). Saat program melakukan iterasi pada array ini, variabel p memiliki tipe referensi Produk. Namun, ketika p.getInfo() dipanggil, Dynamic Binding terjadi: JVM memeriksa tipe objek aktual saat runtime dan memanggil method getInfo() yang telah di-override di subclass yang sesuai (misal, getInfo() milik Benih saat p menunjuk ke objek Benih).
+
+- Demo Overloading: Program juga mendemonstrasikan Overloading dengan sukses. Pemanggilan produkTes.tambahStok(10) memanggil versi (int), dan produkTes.tambahStok(5.5) memanggil versi (double), yang terlihat jelas dari output cetak yang berbeda ((int) vs (dari double)).
+
+- Perbedaan vs Minggu Sebelumnya: Minggu lalu (Inheritance) kita fokus pada mewarisi properti dan method. Minggu ini (Polymorphism), kita fokus pada mengubah perilaku method yang diwarisi tersebut (overriding) dan memperlakukan objek-objek berbeda seolah-olah mereka satu tipe yang sama (dynamic binding dalam array).
+
+- Kendala: Tidak ada kendala signifikan. Kode berjalan sesuai ekspektasi. Implementasi Latihan Mandiri (ObatHama) juga berhasil diintegrasikan ke dalam array daftarProduk dan menampilkan output yang benar.
+
 ---
 
 ## Kesimpulan
-(Tuliskan kesimpulan dari praktikum minggu ini.  
-Contoh: *Dengan menggunakan class dan object, program menjadi lebih terstruktur dan mudah dikembangkan.*)
+Polymorphism memungkinkan kode yang lebih fleksibel dan mudah dipelihara. Kita dapat menulis kode generik (seperti loop for (Produk p : ...) ) yang dapat bekerja dengan berbagai objek subclass (Benih, Pupuk, dll) tanpa perlu mengetahui tipe spesifiknya.
 
 ---
 
 ## Quiz
-(1. [Tuliskan kembali pertanyaan 1 dari panduan]  
-   **Jawaban:** …  
+1. Apa perbedaan overloading dan overriding?  
+   Jawaban:Overloading adalah penggunaan beberapa method dengan nama yang sama dalam satu kelas, tetapi memiliki perbedaan pada jumlah atau tipe parameternya. Overloading diproses pada saat compile-time karena compiler menentukan metode mana yang digunakan berdasarkan parameter yang dikirim.
+   Sementara itu, overriding adalah ketika subclass mendefinisikan ulang method yang sudah ada di superclass dengan nama dan parameter yang sama. Overriding diproses pada saat runtime, karena Java akan memilih method berdasarkan objek sebenarnya, bukan tipe referensinya.
 
-2. [Tuliskan kembali pertanyaan 2 dari panduan]  
-   **Jawaban:** …  
+2.  Bagaimana Java menentukan method mana yang dipanggil dalam dynamic binding?
+    Jawaban:Dalam dynamic binding, Java menentukan method yang dijalankan berdasarkan tipe objek yang sebenarnya pada saat program berjalan. Meskipun referensi variabel menggunakan tipe superclass, Java tetap melihat objek nyata yang dihasilkan oleh new, kemudian memilih versi method yang sesuai dengan kelas objek tersebut. Dengan kata lain, pemanggilan method ditentukan saat runtime, bukan saat compile-time.
 
-3. [Tuliskan kembali pertanyaan 3 dari panduan]  
-   **Jawaban:** …  )
+3. Berikan contoh kasus polymorphism dalam sistem POS selain produk pertanian. 
+   Jawaban:Contoh yang mudah adalah pada sistem POS restoran. Misalnya ada kelas induk bernama MenuItem, kemudian subclass seperti Food, Drink, dan Dessert. Ketika sistem menghitung total belanja, semuanya dipanggil melalui referensi MenuItem, tetapi setiap objek akan menjalankan method calculatePrice() versi masing-masing. Makanan bisa punya pajak lebih besar, minuman mungkin punya biaya tambahan, sedangkan dessert bisa memiliki diskon khusus. Walaupun dipanggil melalui referensi yang sama, hasil perhitungan berbeda sesuai tipe objek yang sebenarnya. Itu adalah bentuk polymorphism dalam POS.

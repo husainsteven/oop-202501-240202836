@@ -180,6 +180,8 @@ public class MainInheritance {
 
 ## Hasil Eksekusi
 
+![Screenshot hasil](screenshots/week3.png)
+
 ---
 
 ## Analisis
