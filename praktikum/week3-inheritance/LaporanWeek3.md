@@ -179,6 +179,7 @@ public class MainInheritance {
 ---
 
 ## Hasil Eksekusi
+<img width="1920" height="1200" alt="week3" src="https://github.com/user-attachments/assets/4255675b-ecf8-4ebd-891b-9bdd2cf7104a" />
 
 ![Screenshot hasil](screenshots/week3.png)
 
