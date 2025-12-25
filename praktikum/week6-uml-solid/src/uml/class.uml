@@ -1,0 +1,68 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+' Entity Layer
+class Product {
+  - code: String
+  - name: String
+  - price: Money
+  - stock: int
+  + reduceStock(qty: int): void
+  + getInfo(): String
+}
+
+' Service Layer
+class CheckoutService {
+  - productService: ProductService
+  - paymentService: PaymentService
+  + checkout(items: List, type: PaymentType): Receipt
+}
+
+class ProductService {
+  - repo: ProductRepository
+  + findProduct(code: String): Product
+  + updateStock(code: String, qty: int): void
+}
+
+class PaymentService {
+  - factory: PaymentFactory
+  + pay(amount: Money, type: PaymentType): Receipt
+}
+
+' Payment Strategy (SOLID)
+interface PaymentMethod <<interface>> {
+  + pay(amount: Money): Receipt
+}
+
+class CashPayment {
+  - amount: Money
+  + pay(amount: Money): Receipt
+}
+
+class EWalletPayment {
+  - account: String
+  - fee: double
+  + pay(amount: Money): Receipt
+  + validate(): boolean
+}
+
+' Persistence Layer
+interface ProductRepository <<interface>> {
+  + save(p: Product): void
+  + findByCode(code: String): Product
+}
+
+class JdbcProductRepository {
+  - connection: Database
+  + save(p: Product): void
+}
+
+' Relationships
+CheckoutService "1" *-- "1" ProductService
+CheckoutService "1" *-- "1" PaymentService
+ProductService ..> ProductRepository : uses
+JdbcProductRepository ..|> ProductRepository : implements
+PaymentService --> PaymentMethod : uses
+CashPayment ..|> PaymentMethod : implements
+EWalletPayment ..|> PaymentMethod : implements
+@enduml

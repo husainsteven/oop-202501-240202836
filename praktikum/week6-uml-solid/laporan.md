@@ -1,64 +1,49 @@
-# Laporan Praktikum Minggu 1 (sesuaikan minggu ke berapa?)
-Topik: [Tuliskan judul topik, misalnya "Class dan Object"]
+# Laporan Praktikum 6
+Topik: Desain Arsitektur Sistem dengan UML dan Prinsip SOLID
 
 ## Identitas
-- Nama  : [Nama Mahasiswa]
-- NIM   : [NIM Mahasiswa]
-- Kelas : [Kelas]
+- Nama  : Husain Stefano
+- NIM   : 240202836
+- Kelas : 3IKRA
 
 ---
 
 ## Tujuan
-(Tuliskan tujuan praktikum minggu ini.  
-Contoh: *Mahasiswa memahami konsep class dan object serta dapat membuat class Produk dengan enkapsulasi.*)
+1. Mahasiswa mampu mengidentifikasi kebutuhan sistem ke dalam diagram UML.
+2. Mahasiswa mampu menggambar UML Class Diagram dengan relasi antar class yang tepat.
+3. Mahasiswa mampu menjelaskan prinsip desain OOP (SOLID).
+4. Mahasiswa mampu menerapkan minimal dua prinsip SOLID dalam kode program.
 
 ---
 
 ## Dasar Teori
-(Tuliskan ringkasan teori singkat (3–5 poin) yang mendasari praktikum.  
-Contoh:  
-1. Class adalah blueprint dari objek.  
-2. Object adalah instansiasi dari class.  
-3. Enkapsulasi digunakan untuk menyembunyikan data.)
+Sistem Agri-POS (Agricultural Point of Sale) adalah aplikasi Point of Sale (POS) yang dirancang untuk mengelola transaksi penjualan dan inventori produk pertanian.
+
+Sistem ini mendukung dua peran utama:
+
+Kasir: Bertanggung jawab atas proses transaksi penjualan, mulai dari pemilihan produk hingga penyelesaian pembayaran dan pencetakan struk.
+Admin: Bertanggung jawab atas manajemen produk (tambah, ubah, hapus, tampil) dan melihat laporan penjualan harian/periodik. Desain arsitektur Agri-POS berfokus pada Maintainability dan Extensibility dengan menerapkan prinsip SOLID, terutama untuk mendukung penambahan metode pembayaran baru di masa depan tanpa memodifikasi modul inti.
 
 ---
 
-## Langkah Praktikum
-(Tuliskan Langkah-langkah dalam prakrikum, contoh:
-1. Langkah-langkah yang dilakukan (setup, coding, run).  
-2. File/kode yang dibuat.  
-3. Commit message yang digunakan.)
+## Hasil Eksekusi  
+[uml_activity]
+[uml_class]
+[uml_sequence]
+[uml_usecasse]
 
----
-
-## Kode Program
-(Tuliskan kode utama yang dibuat, contoh:  
-
-```java
-// Contoh
-Produk p1 = new Produk("BNH-001", "Benih Padi", 25000, 100);
-System.out.println(p1.getNama());
-```
-)
----
-
-## Hasil Eksekusi
-(Sertakan screenshot hasil eksekusi program.  
-![Screenshot hasil](screenshots/hasil.png)
-)
 ---
 
 ## Analisis
-(
-- Jelaskan bagaimana kode berjalan.  
-- Apa perbedaan pendekatan minggu ini dibanding minggu sebelumnya.  
-- Kendala yang dihadapi dan cara mengatasinya.  
-)
+Desain UML menunjukkan alur sistem secara lengkap dari perspektif fungsional dan struktural.
+Prinsip SOLID diterapkan menggunakan interface (PaymentMethod, ProductRepository) sehingga sistem mudah diperluas.
+Activity dan Sequence Diagram menggambarkan skenario sukses dan gagal.
+Class Diagram sudah modular dan memenuhi prinsip SRP & DIP.
+
 ---
 
 ## Kesimpulan
-(Tuliskan kesimpulan dari praktikum minggu ini.  
-Contoh: *Dengan menggunakan class dan object, program menjadi lebih terstruktur dan mudah dikembangkan.*)
+Praktikum ini membuktikan bahwa sinkronisasi antara kebutuhan bisnis dan arsitektur teknis melalui UML menjamin sistem yang konsisten dan bebas celah logika. Penerapan prinsip SOLID pada Class Diagram menciptakan struktur modular yang memudahkan pengembangan fitur baru tanpa merusak fungsi yang sudah ada, sehingga sistem menjadi lebih adaptif dan maintainable dalam jangka panjang. Dengan mempertimbangkan skenario gagal sejak tahap desain, aplikasi menjadi lebih tangguh dalam menangani kendala operasional dunia nyata, memberikan fondasi yang kokoh untuk pengembangan perangkat lunak skala industri yang profesional.
 
 ---
 
