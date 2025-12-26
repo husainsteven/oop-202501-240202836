@@ -1,4 +1,6 @@
 package com.upb.agripos.model;
+// Produk.java
+>>>>>>> 226ee92 (upload test week3)
 
 public class Produk {
     private String kode;

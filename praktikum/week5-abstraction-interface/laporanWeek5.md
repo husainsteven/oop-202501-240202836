@@ -60,6 +60,7 @@ Buat Pembayaran (abstract) dengan field invoiceNo, total dan method:
 
 ## Kode Program
 1. Cash.java
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
@@ -151,6 +152,79 @@ public class EWallet extends Pembayaran implements Validatable, Receiptable {
 
 ```java
 >>>>>>> 296f9cefe783dd8e858a680749c319be78bda047
+=======
+
+package main.java.com.upb.agripos.Model.Pembayaran;
+
+import main.java.com.upb.agripos.Model.Kontrak.Receiptable;
+
+public class Cash extends Pembayaran implements Receiptable {
+    private double tunai;
+
+    public Cash(String invoiceNo, double total, double tunai) {
+        super(invoiceNo, total);
+        this.tunai = tunai;
+    }
+
+    @Override
+    public double biaya() {
+        return 0.0;
+    }
+
+    @Override
+    public boolean prosesPembayaran() {
+        return tunai >= totalBayar(); // sederhana: cukup uang tunai
+    }
+
+    @Override
+    public String cetakStruk() {
+        return String.format("INVOICE %s | TOTAL: %.2f | BAYAR CASH: %.2f | KEMBALI: %.2f",
+                invoiceNo, totalBayar(), tunai, Math.max(0, tunai - totalBayar()));
+    }
+}
+
+2. EWallet.java
+
+package main.java.com.upb.agripos.Model.Pembayaran;
+
+import main.java.com.upb.agripos.Model.Kontrak.Validatable;
+import main.java.com.upb.agripos.Model.Kontrak.Receiptable;
+
+public class EWallet extends Pembayaran implements Validatable, Receiptable {
+    private String akun;
+    private String otp; // sederhana untuk simulasi
+
+    public EWallet(String invoiceNo, double total, String akun, String otp) {
+        super(invoiceNo, total);
+        this.akun = akun;
+        this.otp = otp;
+    }
+
+    @Override
+    public double biaya() {
+        return total * 0.015; // 1.5% fee
+    }
+
+    @Override
+    public boolean validasi() {
+        return otp != null && otp.length() == 6; // contoh validasi sederhana
+    }
+
+    @Override
+    public boolean prosesPembayaran() {
+        return validasi(); // jika validasi lolos, anggap berhasil
+    }
+
+    @Override
+    public String cetakStruk() {
+        return String.format("INVOICE %s | TOTAL+FEE: %.2f | E-WALLET: %s | STATUS: %s",
+                invoiceNo, totalBayar(), akun, prosesPembayaran() ? "BERHASIL" : "GAGAL");
+    }
+}
+
+3. Pembayaran.java
+
+>>>>>>> 226ee92 (upload test week3)
 package main.java.com.upb.agripos.Model.Pembayaran;
 
 public abstract class Pembayaran {
@@ -173,6 +247,7 @@ public abstract class Pembayaran {
     public double getTotal() { return total; }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 4. Receiptable.java
 
@@ -183,12 +258,18 @@ public abstract class Pembayaran {
 
 ```java
 >>>>>>> 296f9cefe783dd8e858a680749c319be78bda047
+=======
+
+4. Receiptable.java
+
+>>>>>>> 226ee92 (upload test week3)
 package main.java.com.upb.agripos.Model.Kontrak;
 
 public interface Receiptable {
     String cetakStruk();
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 5. Validatable.java
 
@@ -199,11 +280,17 @@ public interface Receiptable {
 
 ```java
 >>>>>>> 296f9cefe783dd8e858a680749c319be78bda047
+=======
+
+5. Validatable.java
+
+>>>>>>> 226ee92 (upload test week3)
 package main.java.com.upb.agripos.Model.Kontrak;
 
 public interface Validatable {
     boolean validasi(); // misal validasi OTP/ PIN
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 6. CreditBy.java
@@ -215,6 +302,11 @@ public interface Validatable {
 
 ```java
 >>>>>>> 296f9cefe783dd8e858a680749c319be78bda047
+=======
+
+6. CreditBy.java
+
+>>>>>>> 226ee92 (upload test week3)
 package main.java.com.upb.agripos.util;
 
 public class CreditBy {
@@ -223,6 +315,7 @@ public class CreditBy {
         System.out.println("Credit by: " + nim + " - " + nama);
     }
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 7. MianAbstraction.java
@@ -234,6 +327,11 @@ public class CreditBy {
 
 ```java
 >>>>>>> 296f9cefe783dd8e858a680749c319be78bda047
+=======
+
+7. MianAbstraction.java
+
+>>>>>>> 226ee92 (upload test week3)
 package main.java.com.upb.agripos;
 
 import main.java.com.upb.agripos.Model.Pembayaran.*;
@@ -252,12 +350,16 @@ public class MainAbstraction {
     }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 226ee92 (upload test week3)
 ---
 
 ## Hasil Eksekusi
 ![alt text](<Screenshot 2025-10-16 231934.png>)
 
 Telampir di screenshots
+<<<<<<< HEAD
 =======
 ```java
 ---
@@ -266,35 +368,49 @@ Telampir di screenshots
 <img width="1920" height="1200" alt="Cuplikan layar 2025-11-13 195752" src="https://github.com/user-attachments/assets/5710c441-77e6-4c16-9468-0d8c10c2ff32" />
 
 >>>>>>> 296f9cefe783dd8e858a680749c319be78bda047
+=======
+>>>>>>> 226ee92 (upload test week3)
 ---
 
 ## Analisis
 Program ini menggunakan abstraksi supaya tidak perlu menulis ulang detail cara kerja setiap jenis pembayaran. Semua jenis pembayaran (seperti Cash, EWallet, dan TransferBank) dibuat berdasarkan satu kerangka utama, yaitu class Pembayaran.
 Setiap kelas turunan punya aturan sendiri untuk menghitung biaya dan cara memproses pembayaran. Lalu, ada dua interface (Validatable dan Receiptable) yang digunakan agar kelas bisa punya beberapa kemampuan sekaligus
 <<<<<<< HEAD
+<<<<<<< HEAD
 Untuk kesulitannya, sempat bingung memastikan semua kelas turunan sudah melengkapi method dari class abstrak dan interface. Tapi bisa diatasi dengan fitur bantuan IDE (seperti auto generate method) supaya tidak ada yang ketinggalan. 
 
 =======
 Untuk kesulitannya, sempat bingung memastikan semua kelas turunan sudah melengkapi method dari class abstrak dan interface. Tapi bisa diatasi dengan fitur bantuan IDE (seperti auto generate method) supaya tidak ada yang ketinggalan.
 >>>>>>> 296f9cefe783dd8e858a680749c319be78bda047
+=======
+Untuk kesulitannya, sempat bingung memastikan semua kelas turunan sudah melengkapi method dari class abstrak dan interface. Tapi bisa diatasi dengan fitur bantuan IDE (seperti auto generate method) supaya tidak ada yang ketinggalan. 
+
+>>>>>>> 226ee92 (upload test week3)
 ---
 
 ## Kesimpulan
 Dengan memakai abstract class dan interface, program jadi lebih mudah diatur dan dikembangkan. KKita bisa menambah jenis pembayaran baru tanpa harus mengubah bagian lain dari program. Selain itu, konsep multiple inheritance lewat interface membuat program lebih fleksibel dan tetap aman. Secara keseluruhan, penerapan abstraksi ini membuat kode lebih terstruktur dan efisien.
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 296f9cefe783dd8e858a680749c319be78bda047
+=======
+>>>>>>> 226ee92 (upload test week3)
 
 ---
 
 ## Quiz
 1. Jelaskan perbedaan konsep dan penggunaan abstract class dan interface.  
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 226ee92 (upload test week3)
    Perbedaan antara abstract class dan interface terletak pada konsep serta cara penggunaannya dalam pemrograman Java. Abstract class digunakan sebagai kelas dasar yang dapat memiliki atribut, konstruktor, serta metode yang sudah diimplementasikan sebagian maupun yang bersifat abstrak (tanpa isi). Kelas ini cocok digunakan ketika beberapa kelas memiliki kesamaan perilaku dan struktur data yang dapat diwariskan. Sementara itu, interface berfungsi sebagai kumpulan kontrak perilaku yang harus diikuti oleh kelas lain. Interface hanya berisi deklarasi metode tanpa implementasi, dan seluruh variabelnya bersifat konstan (public static final). Dalam pewarisan, Java hanya mengizinkan satu abstract class untuk di-extend, tetapi memungkinkan satu kelas untuk implements banyak interface sekaligus, sehingga lebih fleksibel dalam mendefinisikan perilaku. 
 
 2. Mengapa multiple inheritance lebih aman dilakukan dengan interface pada Java?  
    Penggunaan interface dalam multiple inheritance dianggap lebih aman di Java karena tidak menimbulkan konflik pewarisan (diamond problem). Hal ini terjadi karena interface hanya mendefinisikan “apa” yang harus dilakukan tanpa menentukan “bagaimana” cara melakukannya. Dengan demikian, beberapa interface dapat digabungkan pada satu kelas tanpa menimbulkan bentrokan implementasi. Sebaliknya, jika Java mengizinkan pewarisan ganda antar kelas, kemungkinan besar akan terjadi konflik ketika dua kelas induk memiliki metode dengan nama dan perilaku yang sama. 
+<<<<<<< HEAD
 =======
    Perbedaan antara abstract class dan interface terletak pada konsep serta cara penggunaannya dalam pemrograman Java. Abstract class digunakan sebagai kelas dasar yang dapat memiliki atribut, konstruktor, serta metode yang sudah diimplementasikan sebagian maupun yang bersifat abstrak (tanpa isi). Kelas ini cocok digunakan ketika beberapa kelas memiliki kesamaan perilaku dan struktur data yang dapat diwariskan. Sementara itu, interface berfungsi sebagai kumpulan kontrak perilaku yang harus diikuti oleh kelas lain. Interface hanya berisi deklarasi metode tanpa implementasi, dan seluruh variabelnya bersifat konstan (public static final). Dalam pewarisan, Java hanya mengizinkan satu abstract class untuk di-extend, tetapi memungkinkan satu kelas untuk implements banyak interface sekaligus, sehingga lebih fleksibel dalam mendefinisikan perilak
 
@@ -302,5 +418,8 @@ Dengan memakai abstract class dan interface, program jadi lebih mudah diatur dan
    Penggunaan interface dalam multiple inheritance dianggap lebih aman di Java karena tidak menimbulkan konflik pewarisan (diamond problem). Hal ini terjadi karena interface hanya mendefinisikan “apa” yang harus dilakukan tanpa menentukan “bagaimana” cara melakukannya. Dengan demikian, beberapa interface dapat digabungkan pada satu kelas tanpa menimbulkan bentrokan implementasi. Sebaliknya, jika Java mengizinkan pewarisan ganda antar kelas, kemungkinan besar akan terjadi konflik ketika dua kelas induk memiliki metode dengan nama dan perilaku yang sama.  
 >>>>>>> 296f9cefe783dd8e858a680749c319be78bda047
 
+=======
+
+>>>>>>> 226ee92 (upload test week3)
 3. Pada contoh Agri-POS, bagian mana yang paling tepat menjadi abstract class dan mana yang menjadi interface? Jelaskan alasannya.  
    Dalam konteks proyek Agri-POS (Agricultural Point of Sale System), bagian yang paling tepat dijadikan abstract class adalah kelas seperti Produk, Transaksi, atau Pengguna, karena ketiganya memiliki atribut dan perilaku dasar yang sama, seperti id, nama, harga, serta metode umum seperti tampilkanInfo() atau hitungTotal(). Sementara itu, bagian yang sebaiknya dijadikan interface adalah Pembayaran, CetakStruk, Diskonable, atau Stokable, karena perilaku tersebut bisa dimiliki oleh berbagai kelas berbeda tanpa perlu berbagi atribut. Misalnya, interface Pembayaran dapat diimplementasikan oleh TransaksiTunai dan TransaksiDigital, keduanya memiliki cara pembayaran berbeda tetapi harus memiliki metode prosesPembayaran(). Dengan pembagian seperti ini, struktur program menjadi lebih teratur, fleksibel, dan mudah dikembangkan.
