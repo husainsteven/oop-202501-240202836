@@ -1,16 +1,19 @@
-# Laporan Praktikum Minggu 1 (sesuaikan minggu ke berapa?)
-Topik: [Tuliskan judul topik, misalnya "Class dan Object"]
+# Laporan Praktikum Minggu 9
+Topik: Exception Handling, Custom Exception, dan Penerapan Design Pattern
 
 ## Identitas
-- Nama  : [Nama Mahasiswa]
-- NIM   : [NIM Mahasiswa]
-- Kelas : [Kelas]
+- Nama  : Husain Stefano
+- NIM   : 240202836
+- Kelas : 3IKRA
 
 ---
 
 ## Tujuan
-(Tuliskan tujuan praktikum minggu ini.  
-Contoh: *Mahasiswa memahami konsep class dan object serta dapat membuat class Produk dengan enkapsulasi.*)
+Menjelaskan perbedaan antara error dan exception.
+Mengimplementasikan try–catch–finally dengan tepat.
+Membuat custom exception sesuai kebutuhan program.
+Mengintegrasikan exception handling ke dalam aplikasi sederhana (kasus keranjang belanja).
+(Opsional) Menerapkan design pattern sederhana (Singleton/MVC) dan unit testing dasar.
 
 ---
 
