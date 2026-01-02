@@ -134,7 +134,6 @@ public class ShoppingCartMap {
 
 ---
 
-<<<<<<< HEAD
 ## Kode Program  
 
 ```java
@@ -249,9 +248,6 @@ public class ShoppingCartMap {
 
 ---
 
-## Analisis
-
-=======
 ## Kode Program
 ```java
 package com.upb.agripos;
@@ -362,16 +358,12 @@ public class ShoppingCartMap {
 ---
 
 ## Analisis
->>>>>>> 462020bc1d41c21c17f43bcdf1190a466d4cb627
 Praktikum Week 7 membahas penerapan konsep Object-Oriented Programming (OOP) melalui studi kasus keranjang belanja. Program menggunakan class Cart untuk mengelola data item dan class MainCart sebagai pengatur alur program.
 
 Penggunaan koleksi memungkinkan item ditambah dan dihapus secara dinamis, serta total harga diperbarui otomatis. Hal ini menunjukkan keunggulan OOP dalam mengelola data yang terstruktur dan fleksibel.
 
 Output program menampilkan isi keranjang sebelum dan sesudah penghapusan item secara jelas, sehingga proses program mudah dipahami. Secara keseluruhan, pendekatan Week 7 menghasilkan program yang lebih modular,
-<<<<<<< HEAD
 
-=======
->>>>>>> 462020bc1d41c21c17f43bcdf1190a466d4cb627
 ---
 
 ## Kesimpulan
@@ -385,7 +377,6 @@ Jawaban: Perbedaan mendasar antara List, Set, dan Map
 
 List
 Menyimpan kumpulan data yang berurutan dan boleh mengandung data duplikat. Setiap elemen memiliki indeks.
-<<<<<<< HEAD
 
 Set
 Menyimpan data tanpa urutan tertentu dan tidak mengizinkan data duplikat.
@@ -420,7 +411,6 @@ Map<String, Produk> daftarProduk;
 List lebih cocok untuk menyimpan daftar belanja:
 List<Produk> keranjang;
 Dengan Map, pencarian produk berdasarkan kode menjadi lebih cepat dan efisien dibandingkan List.
-=======
 
 Set
 Menyimpan data tanpa urutan tertentu dan tidak mengizinkan data duplikat.
@@ -428,32 +418,3 @@ Menyimpan data tanpa urutan tertentu dan tidak mengizinkan data duplikat.
 Map
 Menyimpan data dalam bentuk key–value,   
 
-2. Mengapa ArrayList cocok digunakan untuk keranjang belanja sederhana?
-Jawaban: ArrayList cocok digunakan karena:
-
-Mudah menambah dan menghapus item
-
-Menyimpan data secara berurutan
-
-Mendukung data duplikat (misalnya membeli produk yang sama lebih dari satu)
-
-Implementasin:  
-
-3. Bagaimana struktur Set mencegah duplikasi data?
-Jawaban: Set mencegah duplikasi dengan cara membandingkan elemen menggunakan method equals() dan hashCode(). Jika data yang dimasukkan sudah ada di dalam Set, maka data tersebut tidak akan ditambahkan.
-
-4. Kapan sebaiknya menggunakan Map dibandingkan List? Jelaskan dengan contoh.
-Jawaban: Map sebaiknya digunakan ketika data perlu diakses menggunakan kunci unik.
-
-Contoh:
-Dalam sistem POS pertanian:
-
-Map cocok untuk menyimpan data produk berdasarkan kode:
-Map<String, Produk> daftarProduk;
-(kode produk → objek produk)
-
-List lebih cocok untuk menyimpan daftar belanja:
-List<Produk> keranjang;
-Dengan Map, pencarian produk berdasarkan kode menjadi lebih cepat dan efisien dibandingkan List.
-
->>>>>>> 462020bc1d41c21c17f43bcdf1190a466d4cb627
