@@ -351,11 +351,6 @@ public class ShoppingCartMap {
     }
 }
 ```
-## Hasil Eksekusi
-(Sertakan screenshot hasil eksekusi program.  
-![Screenshot hasil](screenshots/hasil.png)
-)
----
 
 ## Analisis
 Praktikum Week 7 membahas penerapan konsep Object-Oriented Programming (OOP) melalui studi kasus keranjang belanja. Program menggunakan class Cart untuk mengelola data item dan class MainCart sebagai pengatur alur program.
