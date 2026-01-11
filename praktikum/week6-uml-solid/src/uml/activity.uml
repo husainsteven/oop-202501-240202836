@@ -1,0 +1,46 @@
+@startuml
+skinparam conditionStyle diamond
+|Kasir|
+start
+:Scan Barcode Produk;
+|Sistem POS|
+:Hitung Total Belanja;
+:Tampilkan Ringkasan & Total;
+|Kasir|
+:Pilih Metode Pembayaran;
+if (Metode?) then (Tunai)
+  :Input Nominal Uang;
+  |Sistem POS|
+  if (Uang Cukup?) then (Ya)
+    :Hitung Kembalian;
+  else (Tidak)
+    |Kasir|
+    :Informasikan Kekurangan;
+    stop
+  endif
+else (E-Wallet / QRIS)
+  |Sistem POS|
+  :Generate QR Code;
+  :Kirim Request Transaksi;
+  |Payment Gateway|
+  :Proses Validasi Saldo;
+  if (Status Transaksi?) then (Sukses)
+    :Kirim Otorisasi Berhasil;
+  else (Gagal/Timeout)
+    :Kirim Notifikasi Gagal;
+    |Sistem POS|
+    :Tampilkan Pesan Error;
+    |Kasir|
+    :Minta Metode Lain;
+    stop
+  endif
+endif
+
+|Sistem POS|
+:Kurangi Stok Produk;
+:Simpan Data Transaksi;
+:Cetak Struk;
+|Kasir|
+:Serahkan Struk & Barang;
+stop
+@enduml
