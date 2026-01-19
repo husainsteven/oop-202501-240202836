@@ -1,0 +1,42 @@
+@startuml
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+
+actor Kasir
+participant Interface
+participant PaymentService
+participant Database
+
+Kasir -> Interface : pilihMetode(tunai/e-wallet)
+activate Interface
+
+Interface -> PaymentService : prosesBayar(jumlah)
+activate PaymentService
+
+alt metode == Tunai
+    PaymentService -> Database : simpanTransaksi()
+    activate Database
+    Database --> PaymentService : sukses
+    deactivate Database
+    PaymentService --> Interface : kembalian & struk
+    Interface --> Kasir : transaksi selesai
+
+else metode == E-Wallet
+    PaymentService -> PaymentService : cekSaldo()
+    
+    alt saldo tidak cukup
+        PaymentService --> Interface : error("Saldo Habis")
+        Interface --> Kasir : tampilkan pesan gagal
+    else sukses
+        PaymentService -> Database : simpanTransaksi()
+        activate Database
+        Database --> PaymentService : sukses
+        deactivate Database
+        PaymentService --> Interface : struk digital
+        Interface --> Kasir : transaksi berhasil
+    end
+end
+
+deactivate PaymentService
+deactivate Interface
+@enduml

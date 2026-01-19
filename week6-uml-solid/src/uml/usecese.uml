@@ -1,0 +1,56 @@
+@startuml
+skinparam actorStyle awesome
+left to right direction
+
+' Definisi Gaya (Styling)
+skinparam rectangle {
+    BackgroundColor #F9F9F9
+    BorderColor #333333
+}
+skinparam usecase {
+    BackgroundColor #FFFFFF
+    BorderColor #0056b3
+    FontSize 12
+}
+
+actor "Kasir / Waiter" as Staff
+actor "Owner" as Owner
+actor "Payment Gateway" as Gateway <<External System>>
+
+rectangle "SmartDine - Restaurant Management System" {
+    
+    ' Kelompok Operasional
+    usecase "Manajemen Meja" as UC_Table
+    usecase "Input Pesanan" as UC_Order
+    usecase "Proses Pembayaran" as UC_Pay
+    usecase "Cetak Bil & Struk" as UC_Print
+    
+    ' Kelompok Manajerial
+    usecase "Kelola Menu & Stok" as UC_Inventory
+    usecase "Laporan Laba Rugi" as UC_Report
+    
+    ' Sub-fungsi (Relasi)
+    usecase "Validasi Saldo Digital" as UC_Validate
+    usecase "Terapkan Diskon/Promo" as UC_Promo
+}
+
+' Relasi Staff
+Staff -- UC_Table
+Staff -- UC_Order
+Staff -- UC_Pay
+Staff -- UC_Print
+
+' Relasi Owner
+Owner -- UC_Inventory
+Owner -- UC_Report
+Owner -- UC_Order : (Monitoring)
+
+' Relasi External
+UC_Pay -- Gateway
+Gateway -- UC_Validate
+
+' Relasi Dependensi (Include/Extend)
+UC_Pay <.. UC_Validate : <<include>>
+UC_Pay <.. UC_Print : <<include>>
+UC_Order <.. UC_Promo : <<extend>>
+@enduml
