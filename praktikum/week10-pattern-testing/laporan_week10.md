@@ -1,96 +1,72 @@
-# Laporan Praktikum Minggu 10 - Design Pattern dan Unit Testing
-
+# Laporan Praktikum Minggu 10
 Topik: Design Pattern (Singleton, MVC) dan Unit Testing menggunakan JUnit
 
 ## Identitas
-- Nama  : Anonymous
+- Nama  : Husain Stefano
 - NIM   : 240202836
 - Kelas : 3IKRA
-- Tanggal : Januari 2026
 
 ---
 
 ## Tujuan
 Mahasiswa mampu:
-1. Menjelaskan dan mengimplementasikan Singleton Pattern
-2. Menerapkan Model–View–Controller (MVC) pada aplikasi sederhana
-3. Membuat dan menjalankan unit test menggunakan JUnit
-4. Menganalisis manfaat penerapan design pattern dan unit testing
+1. Menjelaskan konsep dasar design pattern dalam rekayasa perangkat lunak
+2. Mengimplementasikan Singleton Pattern dengan benar
+3. Menjelaskan dan menerapkan Model–View–Controller (MVC) pada aplikasi sederhana
+4. Membuat dan menjalankan unit test menggunakan JUnit
+5. Menganalisis manfaat penerapan design pattern dan unit testing terhadap kualitas perangkat lunak
 
 ---
 
 ## Dasar Teori
 
-### 1. Design Pattern
-Design pattern adalah solusi desain yang telah teruji untuk masalah umum dalam pengembangan software.
+1. Design Pattern adalah solusi desain yang telah teruji untuk menyelesaikan masalah umum dalam pengembangan perangkat lunak.
 
-### 2. Singleton Pattern
-Pattern yang menjamin class hanya memiliki satu instance dengan akses global melalui `getInstance()`.
+2. Singleton Pattern adalah pattern yang menjamin suatu class hanya memiliki satu instance dan menyediakan titik akses global melalui method static `getInstance()`.
 
-### 3. MVC (Model–View–Controller)
-Pattern yang memisahkan tanggung jawab aplikasi:
-- Model: Data dan logika bisnis
-- View: Tampilan/output
-- Controller: Penghubung Model dan View
+3. MVC (Model–View–Controller) memisahkan tanggung jawab aplikasi:
+   - Model: Data dan logika bisnis
+   - View: Tampilan/output
+   - Controller: Penghubung antara Model dan View
 
-### 4. Unit Testing
-Proses pengujian komponen kecil (unit) dengan anotasi `@Test` dan assertion.
+4. Unit Testing adalah proses pengujian komponen kecil (unit) dari program secara terpisah menggunakan anotasi `@Test` dan assertion.
 
 ---
 
 ## Langkah Praktikum
 
-### 1. Persiapan Folder
-Membuat struktur direktori sesuai standar Maven:
-```
-src/main/java/com/upb/agripos/
-├── model/
-├── view/
-├── controller/
-└── config/
-src/test/java/com/upb/agripos/
-```
+1. Membuat struktur folder MVC
+   - `src/main/java/com/upb/agripos/model/` → Product.java
+   - `src/main/java/com/upb/agripos/view/` → ConsoleView.java
+   - `src/main/java/com/upb/agripos/controller/` → ProductController.java
+   - `src/main/java/com/upb/agripos/config/` → DatabaseConnection.java
 
-### 2. Implementasi Komponen
+2. Mengimplementasikan Model, View, dan Controller
+   - Product: Class yang merepresentasikan produk dengan properties code dan name
+   - ConsoleView: Class untuk menampilkan output ke console
+   - ProductController: Class yang menghubungkan Model dan View
+   - DatabaseConnection: Singleton pattern untuk koneksi database
 
-#### a) Model - Product.java
-Class yang mewakili data Product dengan properties `code` dan `name`.
+3. Membuat program utama (AppMVC.java)
+   - Menampilkan identitas NIM
+   - Test Singleton dengan membuat dua instance
+   - Menjalankan MVC untuk menampilkan produk
 
-#### b) View - ConsoleView.java
-Class yang menampilkan output ke konsol menggunakan `System.out.println()`.
+4. Membuat unit test (ProductTest.java)
+   - Test getName(), getCode(), dan null check
+   - Menggunakan Java assertions
 
-#### c) Controller - ProductController.java
-Class yang menghubungkan Model dan View, mengandung logika untuk menampilkan produk.
-
-#### d) Singleton - DatabaseConnection.java
-Implementasi pattern Singleton dengan:
-- Constructor private
-- Static instance
-- Method getInstance()
-
-#### e) Main Program - AppMVC.java
-Program utama yang:
-- Menampilkan identitas NIM
-- Test Singleton (memastikan kedua instance sama)
-- Menjalankan MVC
-
-#### f) Unit Test - ProductTest.java
-Membuat 3 test cases untuk Product:
-1. Test getName()
-2. Test getCode()
-3. Test non-null
-
-### 3. Commit Message
-```
-week10-pattern-testing: Implementasi Singleton, MVC, dan Unit Testing
-```
+5. Commit ke repository
+   - Commit message: `week10-pattern-testing: Implementasi Singleton, MVC, dan Unit Testing`
 
 ---
 
-## Kode Program Utama
+## Kode Program
 
-### Product Model
+### 1. Model - Product.java
 ```java
+package com.upb.agripos.model;
+
 public class Product {
     private final String code;
     private final String name;
@@ -105,8 +81,24 @@ public class Product {
 }
 ```
 
-### ProductController
+### 2. View - ConsoleView.java
 ```java
+package com.upb.agripos.view;
+
+public class ConsoleView {
+    public void showMessage(String message) {
+        System.out.println(message);
+    }
+}
+```
+
+### 3. Controller - ProductController.java
+```java
+package com.upb.agripos.controller;
+
+import com.upb.agripos.model.Product;
+import com.upb.agripos.view.ConsoleView;
+
 public class ProductController {
     private final Product model;
     private final ConsoleView view;
@@ -122,8 +114,10 @@ public class ProductController {
 }
 ```
 
-### Singleton DatabaseConnection
+### 4. Singleton - DatabaseConnection.java
 ```java
+package com.upb.agripos.config;
+
 public class DatabaseConnection {
     private static DatabaseConnection instance;
 
@@ -138,47 +132,27 @@ public class DatabaseConnection {
 }
 ```
 
-### Main Program
+### 5. Main Program - AppMVC.java
 ```java
+package com.upb.agripos;
+
+import com.upb.agripos.model.Product;
+import com.upb.agripos.view.ConsoleView;
+import com.upb.agripos.controller.ProductController;
+import com.upb.agripos.config.DatabaseConnection;
+
 public class AppMVC {
     public static void main(String[] args) {
-        System.out.println("Hello, I am Anonymous-240202836 (Week10)");
+        System.out.println("Hello, I am Husain Stefano-240202836 (Week10)");
         
-        // Test Singleton
         DatabaseConnection db1 = DatabaseConnection.getInstance();
         DatabaseConnection db2 = DatabaseConnection.getInstance();
         System.out.println("Singleton Test: " + (db1 == db2 ? "PASS - Same Instance" : "FAIL"));
         
-        // MVC
         Product product = new Product("P01", "Pupuk Organik");
         ConsoleView view = new ConsoleView();
         ProductController controller = new ProductController(product, view);
         controller.showProduct();
-    }
-}
-```
-
-### Unit Test
-```java
-public class ProductTest {
-    @Test
-    public void testProductName() {
-        Product p = new Product("P01", "Benih Jagung");
-        assertEquals("Benih Jagung", p.getName());
-    }
-
-    @Test
-    public void testProductCode() {
-        Product p = new Product("P01", "Benih Jagung");
-        assertEquals("P01", p.getCode());
-    }
-
-    @Test
-    public void testProductNotNull() {
-        Product p = new Product("P02", "Pupuk Urea");
-        assertNotNull(p);
-        assertNotNull(p.getCode());
-        assertNotNull(p.getName());
     }
 }
 ```
@@ -189,65 +163,77 @@ public class ProductTest {
 
 ### Output Program
 ```
-Hello, I am Anonymous-240202836 (Week10)
+Hello, I am Husain Stefano-240202836 (Week10)
 Singleton Test: PASS - Same Instance
 Produk: P01 - Pupuk Organik
 ```
 
 ### Hasil Unit Test
-✅ Semua test cases berhasil (3/3 PASS):
-- testProductName() ✓
-- testProductCode() ✓
-- testProductNotNull() ✓
+```
+[INFO] -------------------------------------------------------
+[INFO] T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.upb.agripos.ProductTest
+[INFO] testProductName ....................... SUCCESS
+[INFO] testProductCode ....................... SUCCESS
+[INFO] testProductNotNull ....................... SUCCESS
+[INFO] testProductComplete ....................... SUCCESS
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO] BUILD SUCCESS
+[INFO] -------------------------------------------------------
+```
 
-![Screenshot hasil unit test](screenshots/junit_result.png)
+**Screenshot Hasil Test:**
+
+![Screenshot hasil unit test](screenshots/CuplikanlayarWeek10.png)
 
 ---
 
 ## Analisis
 
-### Keuntungan Singleton Pattern
-1. Menjamin hanya satu instance yang ada (thread-safe concerns dapat ditangani)
-2. Akses global melalui getInstance()
-3. Ideal untuk database connection, logger, configuration
-
-### Keuntungan MVC Pattern
-1. Separation of Concerns - setiap komponen fokus pada tanggung jawabnya
-2. Mudah di-test secara independen
-3. Reusable - Model dan Controller dapat bekerja dengan View berbeda
-4. Maintainability tinggi
-
-### Keuntungan Unit Testing
-1. Early detection of bugs
-2. Documentation of code behavior
-3. Safe refactoring - perubahan dapat ditest dengan cepat
-4. Increased confidence dalam kode
+- **Singleton Pattern** berhasil diimplementasikan dengan menjamin hanya satu instance yang dibuat
+- **MVC Pattern** membuat kode lebih terstruktur dengan pemisahan Model, View, dan Controller
+- **Unit Testing** memastikan setiap komponen berfungsi sesuai harapan
+- Tidak ada kendala signifikan dalam implementasi
 
 ---
 
 ## Kesimpulan
-Praktikum ini berhasil menunjukkan implementasi design pattern (Singleton dan MVC) serta pentingnya unit testing dalam membangun software yang berkualitas, mudah dimaintain, dan reliable. Ketiga konsep ini bekerja bersama untuk meningkatkan kualitas dan profesionalisme kode.
 
-## Analisis
-(
-- Jelaskan bagaimana kode berjalan.  
-- Apa perbedaan pendekatan minggu ini dibanding minggu sebelumnya.  
-- Kendala yang dihadapi dan cara mengatasinya.  
-)
----
-
-## Kesimpulan
-(Tuliskan kesimpulan dari praktikum minggu ini.  
-Contoh: *Dengan menggunakan class dan object, program menjadi lebih terstruktur dan mudah dikembangkan.*)
+Praktikum minggu 10 berhasil menunjukkan implementasi Design Pattern (Singleton dan MVC) serta Unit Testing menggunakan JUnit. Ketiga konsep ini sangat penting untuk membangun software yang berkualitas, mudah dimaintain, dan reliable.
 
 ---
 
 ## Quiz
-(1. [Tuliskan kembali pertanyaan 1 dari panduan]  
-   **Jawaban:** …  
 
-2. [Tuliskan kembali pertanyaan 2 dari panduan]  
-   **Jawaban:** …  
+1. **Mengapa constructor pada Singleton harus bersifat private?**
+   
+   **Jawaban:** Constructor harus private untuk mencegah pembuatan instance baru dari luar class. Constructor private menjamin bahwa hanya satu instance yang bisa dibuat melalui method static getInstance(). Jika constructor bersifat public, siapa saja bisa membuat instance baru kapan saja dengan `new DatabaseConnection()`, yang akan merusak pattern Singleton dan menyebabkan multiple instances di memory.
 
-3. [Tuliskan kembali pertanyaan 3 dari panduan]  
-   **Jawaban:** …  )
+2. **Jelaskan manfaat pemisahan Model, View, dan Controller.**
+   
+   **Jawaban:** Pemisahan MVC memberikan manfaat sebagai berikut:
+   - **Separation of Concerns**: Setiap komponen fokus pada tanggung jawab spesifiknya
+   - **Maintainability**: Kode lebih mudah dipahami, dirawat, dan di-debug
+   - **Testability**: Komponen dapat di-test secara independen tanpa dependency lainnya
+   - **Reusability**: Model dan Controller dapat digunakan dengan View berbeda
+   - **Flexibility**: Perubahan tampilan (View) tidak mempengaruhi logika bisnis (Model dan Controller)
+
+3. **Apa peran unit testing dalam menjaga kualitas perangkat lunak?**
+   
+   **Jawaban:** Unit testing memiliki peran penting sebagai berikut:
+   - **Early Detection**: Mendeteksi bug sejak dini dalam development cycle sebelum masuk ke production
+   - **Documentation**: Berfungsi sebagai dokumentasi hidup tentang cara kerja setiap unit
+   - **Regression Prevention**: Memastikan perubahan kode baru tidak merusak fitur existing
+   - **Confidence**: Meningkatkan kepercayaan bahwa code berfungsi dengan benar sesuai requirement
+   - **Refactoring Safety**: Memungkinkan refactoring kode dengan aman tanpa takut merusak fungsi yang sudah ada
+
+4. **Apa risiko jika Singleton tidak diimplementasikan dengan benar?**
+   
+   **Jawaban:** Risiko implementasi Singleton yang salah:
+   - **Multiple Instances**: Jika constructor bukan private, bisa dibuat multiple instances yang menyebabkan inconsistency
+   - **Thread Safety Issues**: Di environment multi-threaded, bisa terjadi race condition dan instance tidak consistent
+   - **Memory Leak**: Instance yang tidak di-garbage collect dengan benar menyebabkan memory leak
+   - **Testing Difficulty**: Sulit untuk di-test karena state instance persisten antar test (tidak bersih)
+   - **Data Inconsistency**: Multiple instances bisa menyebabkan data menjadi tidak konsisten di berbagai bagian aplikasi
