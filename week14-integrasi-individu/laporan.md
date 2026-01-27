@@ -1,33 +1,46 @@
-# Laporan Praktikum Minggu 1 (sesuaikan minggu ke berapa?)
-Topik: [Tuliskan judul topik, misalnya "Class dan Object"]
-
+# Laporan Praktikum Minggu 14 
+Topik:Bab 14 – Integrasi Individu (OOP + Database + GUI)
 ## Identitas
-- Nama  : [Nama Mahasiswa]
-- NIM   : [NIM Mahasiswa]
-- Kelas : [Kelas]
+- Nama  : Husain Stefano
+- NIM   : 240202836
+- Kelas : 3IKRA
 
 ---
 
 ## Tujuan
-(Tuliskan tujuan praktikum minggu ini.  
-Contoh: *Mahasiswa memahami konsep class dan object serta dapat membuat class Produk dengan enkapsulasi.*)
+Setelah mengikuti praktikum ini, mahasiswa mampu:
+
+Mengintegrasikan konsep OOP (Bab 1–5) ke dalam satu aplikasi yang utuh.
+Mengimplementasikan rancangan UML + SOLID (Bab 6) menjadi kode nyata.
+Mengintegrasikan Collections + Keranjang (Bab 7) ke alur aplikasi.
+Menerapkan exception handling (Bab 9) untuk validasi dan error flow.
+Menerapkan pattern + unit testing (Bab 10) pada bagian yang relevan.
+Menghubungkan aplikasi dengan database via DAO + JDBC (Bab 11).
+Menyajikan aplikasi berbasis JavaFX (Bab 12–13) yang terhubung ke backend.
 
 ---
 
 ## Dasar Teori
-(Tuliskan ringkasan teori singkat (3–5 poin) yang mendasari praktikum.  
-Contoh:  
-1. Class adalah blueprint dari objek.  
-2. Object adalah instansiasi dari class.  
-3. Enkapsulasi digunakan untuk menyembunyikan data.)
+Pada Bab 14, Anda membangun 1 aplikasi individu bernama Agri-POS (kasir sederhana) yang menggabungkan hasil kerja Bab 1–13.
+
+Target akhir:
+
+Aplikasi JavaFX berjalan.
+Data Produk tersimpan di PostgreSQL (CRUD via DAO).
+Keranjang belanja berjalan (Collections) dan dipakai dalam alur aplikasi.
+Struktur kelas mengikuti UML Bab 6 dan prinsip SOLID.
+Ada minimal 1 unit test JUnit yang relevan.
 
 ---
 
 ## Langkah Praktikum
-(Tuliskan Langkah-langkah dalam prakrikum, contoh:
-1. Langkah-langkah yang dilakukan (setup, coding, run).  
-2. File/kode yang dibuat.  
-3. Commit message yang digunakan.)
+Tidak membuat ulang dari nol. Lanjutkan dan gabungkan kode yang sudah Anda buat di Bab 1–13.
+Konsistensi Bab 6 (UML + SOLID) adalah kunci. Jika di Bab 6 Anda menamai kelas/metode tertentu, Bab 14 harus mengikuti nama itu.
+DIP (Dependency Inversion) wajib diterapkan:
+View (JavaFX) tidak boleh mengakses DAO langsung.
+Akses data harus melewati Controller → Service → DAO.
+Tidak ada logika SQL/CRUD di layer GUI.
+Validasi & error flow wajib memakai exception (Bab 9), bukan hanya if tanpa penanganan.
 
 ---
 
@@ -44,7 +57,7 @@ System.out.println(p1.getNama());
 
 ## Hasil Eksekusi
 (Sertakan screenshot hasil eksekusi program.  
-![Screenshot hasil](screenshots/hasil.png)
+![Screenshot hasil](Cuplikanlayarweek14(2).png Cuplikanlayarweek14.png)
 )
 ---
 
