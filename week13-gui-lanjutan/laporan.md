@@ -1,16 +1,20 @@
-# Laporan Praktikum Minggu 1 (sesuaikan minggu ke berapa?)
-Topik: [Tuliskan judul topik, misalnya "Class dan Object"]
+# Laporan Praktikum Minggu 13 
+Bab 13 – GUI Lanjutan JavaFX (TableView dan Lambda Expression)
 
 ## Identitas
-- Nama  : [Nama Mahasiswa]
-- NIM   : [NIM Mahasiswa]
-- Kelas : [Kelas]
+- Nama  : Husain Stefano
+- NIM   : 240202836
+- Kelas : 3IKRA
 
 ---
 
 ## Tujuan
-(Tuliskan tujuan praktikum minggu ini.  
-Contoh: *Mahasiswa memahami konsep class dan object serta dapat membuat class Produk dengan enkapsulasi.*)
+Menampilkan data menggunakan TableView JavaFX.
+Mengintegrasikan koleksi objek dengan GUI.
+Menggunakan lambda expression untuk event handling.
+Menghubungkan GUI dengan DAO secara penuh.
+Membangun antarmuka GUI Agri-POS yang lebih interaktif.
+
 
 ---
 
