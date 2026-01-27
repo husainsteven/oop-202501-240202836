@@ -1,25 +1,30 @@
-# Laporan Praktikum Minggu 1 (sesuaikan minggu ke berapa?)
-Topik: [Tuliskan judul topik, misalnya "Class dan Object"]
+# Laporan Praktikum Minggu 11 
+TBab 11 – Data Access Object (DAO) dan CRUD Database dengan JDBC
 
 ## Identitas
-- Nama  : [Nama Mahasiswa]
-- NIM   : [NIM Mahasiswa]
-- Kelas : [Kelas]
+- Nama  : Husain Stefano
+- NIM   : 240202836
+- Kelas : 3IKRA
 
 ---
 
 ## Tujuan
-(Tuliskan tujuan praktikum minggu ini.  
-Contoh: *Mahasiswa memahami konsep class dan object serta dapat membuat class Produk dengan enkapsulasi.*)
+Menjelaskan konsep Data Access Object (DAO) dalam pengembangan aplikasi OOP.
+Menghubungkan aplikasi Java dengan basis data menggunakan JDBC.
+Mengimplementasikan operasi CRUD (Create, Read, Update, Delete) secara lengkap.
+Mengintegrasikan DAO dengan class aplikasi OOP sesuai prinsip desain yang baik.
 
 ---
 
 ## Dasar Teori
-(Tuliskan ringkasan teori singkat (3–5 poin) yang mendasari praktikum.  
-Contoh:  
-1. Class adalah blueprint dari objek.  
-2. Object adalah instansiasi dari class.  
-3. Enkapsulasi digunakan untuk menyembunyikan data.)
+1. Konsep Data Access Object (DAO)
+DAO adalah pola desain yang memisahkan logika akses data dari logika bisnis aplikasi. Dengan DAO, perubahan teknologi basis data tidak memengaruhi logika utama aplikasi.
+
+Manfaat DAO:
+
+Kode lebih terstruktur dan mudah dipelihara
+Mengurangi tight coupling antara aplikasi dan database
+Mendukung pengujian dan pengembangan lanjutan
 
 ---
 
