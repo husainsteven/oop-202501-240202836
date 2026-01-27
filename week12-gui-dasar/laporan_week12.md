@@ -1,16 +1,20 @@
-# Laporan Praktikum Minggu 1 (sesuaikan minggu ke berapa?)
-Topik: [Tuliskan judul topik, misalnya "Class dan Object"]
+# Laporan Praktikum Minggu 12 
+Bab 12 – GUI Dasar JavaFX (Event-Driven Programming)
 
 ## Identitas
-- Nama  : [Nama Mahasiswa]
-- NIM   : [NIM Mahasiswa]
-- Kelas : [Kelas]
+- Nama  : Husain Stefano
+- NIM   : 240202836
+- Kelas : 3IKRA
 
 ---
 
 ## Tujuan
-(Tuliskan tujuan praktikum minggu ini.  
-Contoh: *Mahasiswa memahami konsep class dan object serta dapat membuat class Produk dengan enkapsulasi.*)
+Menjelaskan konsep event-driven programming.
+Membangun antarmuka grafis sederhana menggunakan JavaFX.
+Membuat form input data produk.
+Menampilkan daftar produk pada GUI.
+Mengintegrasikan GUI dengan modul backend yang telah dibuat (DAO & Service).
+
 
 ---
 
